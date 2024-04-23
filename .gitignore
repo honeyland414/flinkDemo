@@ -1,33 +1,131 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# 本项目专用
+.private
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
+# NodeJS 项目通用
+
+## Node
+.node_repl_history
+pids
+*.pid
+*.seed
+*.pid.lock
+
+## NPM
+node_modules
+jspm_packages
+.npm
+*.tgz
+
+## 常用框架
+lib-cov
+coverage
+.nyc_output
+.grunt
+.lock-wscript
+.eslintcache
+
+# 项目通用
+
+## 生成文件
+_build
+
+## 临时文件
+*.tmp
+*.log
+*~
+._*
+
+## 比较文件
+*.patch
+*.diff
+
+# 操作系统
+
+## Windows
+*.lnk
+$RECYCLE.BIN
+Desktop.ini
+ehthumbs.db
+Thumbs.db
+
+## OSX
+.DS_Store
+
+# IDE
+
+## Sublime
+*.sublime-workspace
+
+## Dreamweaver
+_notes
+
+## WebStorm
+WebWorkbench.mswwsettings
 .settings
-.springBeans
-.sts4-cache
+*.idea
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
+## Visual Studio
+.vs
+obj
+ipch
+*.sln.*
+*.vshost.*
+*.suo
+*.user
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp_proj
+*_i.c
+*_p.c
+*.vspscc
+*.vssscc
+*.pidb
+*.scc
+csx
+*.build.csdef
+*.aps
+*.ncb
+*.cachefile
+*.psess
+*.vsp
+*.vspx
+*.gpState
+_TeamCity*
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+## Visual Studio - 测试框架
+TestResults
+BuildLog.*
+*.VisualState.xml
+TestResult.xml
+_Chutzpah*
 
-### VS Code ###
-.vscode/
+## Visual Studio - 数据库
+*.opensdf
+*.sdf
+
+## Visual Studio - Node 插件
+.ntvs_analysis.dat
+Microsoft.NodejsTools.WebRole.dll
+
+## Visual Studio - Sandcastle 插件
+DocProject
+
+## Visual Studio - ReSharper 插件
+*.dotCover
+_ReSharper*/
+*.ReSharper
+
+## Visual Studio - NCrunch 插件
+*.ncrunch*
+.*crunch*.local.xml
+UserService.iml
