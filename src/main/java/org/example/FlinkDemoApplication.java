@@ -17,14 +17,12 @@ import org.apache.flink.util.Collector;
 
 public class FlinkDemoApplication {
     public static void main( String[] args ) throws Exception {
-        //batchWordCount();
         streamWordCount();
     }
 
     public static void streamWordCount() throws Exception {
         //StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        StreamExecutionEnvironment env =
-                StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
         DataStreamSource<String> ds = env.readTextFile("input/word.txt");
 
         SingleOutputStreamOperator<Tuple2<String, Integer>> wordMap = ds.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
@@ -52,23 +50,22 @@ public class FlinkDemoApplication {
     }
 
     //outdated
-    public static void batchWordCount() throws Exception{
-        ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
-        DataSource<String> ds = env.readTextFile("input/word.txt");
-        FlatMapOperator<String, Tuple2<String, Integer>> wordMap = ds.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
-            @Override
-            public void flatMap(String value, Collector<Tuple2<String, Integer>> out) throws Exception {
-                String[] words = value.split(" ");
-                for (String word : words) {
-                    Tuple2<String, Integer> wordTuple = Tuple2.of(word, 1);
-                    out.collect(wordTuple);
-                }
-            }
-        });
-        UnsortedGrouping<Tuple2<String, Integer>> wordGroupBy = wordMap.groupBy(0);
-        AggregateOperator<Tuple2<String, Integer>> res = wordGroupBy.sum(1);
-
-        res.print();
-
-    }
+//    public static void batchWordCount() throws Exception{
+//        ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+//        DataSource<String> ds = env.readTextFile("input/word.txt");
+//        FlatMapOperator<String, Tuple2<String, Integer>> wordMap = ds.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
+//            @Override
+//            public void flatMap(String value, Collector<Tuple2<String, Integer>> out) throws Exception {
+//                String[] words = value.split(" ");
+//                for (String word : words) {
+//                    Tuple2<String, Integer> wordTuple = Tuple2.of(word, 1);
+//                    out.collect(wordTuple);
+//                }
+//            }
+//        });
+//        UnsortedGrouping<Tuple2<String, Integer>> wordGroupBy = wordMap.groupBy(0);
+//        AggregateOperator<Tuple2<String, Integer>> res = wordGroupBy.sum(1);
+//
+//        res.print();
+//    }
 }
